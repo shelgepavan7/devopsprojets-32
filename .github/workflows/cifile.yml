@@ -25,11 +25,11 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t hello-pavan:latest .
+          docker build -t hello-pavans:latest .
 
       - name: Run Docker container
         run: |
-          docker run -d -p 9090:9090 --name hello-pavan-container hello-pavan:latest
+          docker run -d -p 9090:9090 --name hello-pavans-container hello-pavans:latest
           sleep 5
 
       - name: Test /hello endpoint
@@ -43,7 +43,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Tag image
-        run: docker tag hello-pavan ${{ secrets.DOCKERHUB_USERNAME }}/hello-pavan:latest
+        run: docker tag hello-pavans ${{ secrets.DOCKERHUB_USERNAME }}/hello-pavans:latest
 
       - name: Push image to Docker Hub
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/hello-pavan:latest
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/hello-pavans:latest
